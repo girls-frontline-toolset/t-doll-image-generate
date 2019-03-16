@@ -99,12 +99,12 @@ for (let i = 0; i < rangeArray.length; i++) {
         const framePath = common.config.folder.frame + "/" + data.star + ".png";
         const typePath = common.config.folder.type + "/" + data.star + "/" + data.type + ".png";
 
-        const typeMap = {HG:{tw:"手槍",en:"HG",ja:"ハンドガン",cn:""}
-                        ,SMG:{tw:"衝鋒鎗",en:"SMG",ja:"サブマシ",cn:""}
-                        ,MG:{tw:"機槍",en:"MG",ja:"マシンガン",cn:""}
-                        ,RF:{tw:"步槍",en:"RF",ja:"ライフル",cn:""}
-                        ,AR:{tw:"突擊步槍",en:"AR",ja:"アサルト",cn:""}
-                        ,SG:{tw:"霰彈槍",en:"SG",ja:"シヨツトガン",cn:""}};
+        const typeMap = {HG:{tw:"手槍",en:"HG",ja:"ハンドガン",cn:"手枪"}
+                        ,SMG:{tw:"衝鋒鎗",en:"SMG",ja:"サブマシ",cn:"冲锋枪"}
+                        ,MG:{tw:"機槍",en:"MG",ja:"マシンガン",cn:"机枪"}
+                        ,RF:{tw:"步槍",en:"RF",ja:"ライフル",cn:"步枪"}
+                        ,AR:{tw:"突擊步槍",en:"AR",ja:"アサルト",cn:"突击步枪"}
+                        ,SG:{tw:"霰彈槍",en:"SG",ja:"シヨツトガン",cn:"霰弹枪"}};
 
         Jimp.read(backgroundPath, (err, background) => {
             if (err) throw err;
@@ -153,17 +153,17 @@ for (let i = 0; i < rangeArray.length; i++) {
 function getFnt(lang,j) {
     let rs = {nameFont:"",nameY:""};
 
-    if (lang === 'tw') {
+    if (lang === 'tw' || lang === 'cn') {
         switch (j) {
             case 56:
             case 141:
             case 198:
-                rs.nameFont = `./fnt/tw/s90/font.fnt`;
+                rs.nameFont = `./fnt/${lang}/s90/font.fnt`;
                 rs.nameY = 1015;
                 break;
             case 156:
             case 197:
-                rs.nameFont = `./fnt/tw/s100/font.fnt`;
+                rs.nameFont = `./fnt/${lang}/s100/font.fnt`;
                 rs.nameY = 1000;
                 break;
         }
