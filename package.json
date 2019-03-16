@@ -1,0 +1,23 @@
+{
+  "name": "t-doll-image-generate",
+  "version": "1.0.0",
+  "description": "[![License](https://img.shields.io/github/license/girls-frontline-toolset/t-doll-image-generate.svg?style=flat-square)](/LICENSE)",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/girls-frontline-toolset/t-doll-image-generate.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/girls-frontline-toolset/t-doll-image-generate/issues"
+  },
+  "homepage": "https://github.com/girls-frontline-toolset/t-doll-image-generate#readme",
+  "dependencies": {
+    "jimp": "^0.6.0",
+    "sync-request": "^6.0.0"
+  }
+}
