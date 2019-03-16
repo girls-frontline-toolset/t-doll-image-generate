@@ -120,6 +120,7 @@ for (let i = 0; i < rangeArray.length; i++) {
                                             if (lang === 'tw') {
                                                 switch (j) {
                                                     case 56:
+                                                    case 141:
                                                     case 198:
                                                         nameFont = `./fnt/tw/s90/font.fnt`;
                                                         nameY = 1015;
