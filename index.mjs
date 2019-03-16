@@ -20,7 +20,7 @@ function SaveDefaultImage(no,savePath){
     if (isDigital) {return}
     no = "" + no;
     Jimp.read(""+common.config.defaultImage, (err, defaultFile) => {
-        Jimp.loadFont(`./fnt/${lang}/type/font.fnt`).then(typeFont => {
+        Jimp.loadFont(`./fnt/number/font.fnt`).then(typeFont => {
             defaultFile
                 .print(typeFont, (no.length === 3)?555:(no.length === 2)? 580: 600, 1167, no)
                 .resize(common.config.img.width, common.config.img.height)
@@ -100,7 +100,7 @@ for (let i = 0; i < rangeArray.length; i++) {
         const typePath = common.config.folder.type + "/" + data.star + "/" + data.type + ".png";
 
         const typeMap = {HG:{tw:"手槍",en:"HG",ja:"ハンドガン",cn:""}
-                        ,SMG:{tw:"衝鋒鎗",en:"SMG",ja:"イングラム",cn:""}
+                        ,SMG:{tw:"衝鋒鎗",en:"SMG",ja:"サブマシ",cn:""}
                         ,MG:{tw:"機槍",en:"MG",ja:"マシンガン",cn:""}
                         ,RF:{tw:"步槍",en:"RF",ja:"ライフル",cn:""}
                         ,AR:{tw:"突擊步槍",en:"AR",ja:"アサルト",cn:""}
@@ -113,50 +113,13 @@ for (let i = 0; i < rangeArray.length; i++) {
                             Jimp.read(typePath).then(type=>{
                                     Jimp.loadFont(`./fnt/${lang}/type/font.fnt`).then(typeFont => {
                                         Jimp.loadFont(`./fnt/number/font.fnt`).then(numberFont => {
-                                            let nameFont = `./fnt/${lang}/font.fnt`;
-                                            let nameY = 990;
+                                            let nameFont = getFnt(lang,j).nameFont || `./fnt/${lang}/font.fnt`;
+                                            let nameY = getFnt(lang,j).nameY ||990;
 
-
-                                            if (lang === 'tw') {
-                                                switch (j) {
-                                                    case 56:
-                                                    case 141:
-                                                    case 198:
-                                                        nameFont = `./fnt/tw/s90/font.fnt`;
-                                                        nameY = 1015;
-                                                        break;
-                                                    case 156:
-                                                    case 197:
-                                                        nameFont = `./fnt/tw/s100/font.fnt`;
-                                                        nameY = 1000;
-                                                        break;
-                                                }
-                                            }else if (lang === 'en'){
-                                                switch (j) {
-                                                    case 198:
-                                                    case 197:
-                                                    case 141:
-                                                        nameFont = `./fnt/en/s90/font.fnt`;
-                                                        nameY = 1025;
-                                                        break;
-                                                    case 171:
-                                                    case 156:
-                                                    case 114:
-                                                    case 56:
-                                                    case 79:
-                                                    case 39:
-                                                        nameFont = `./fnt/en/s100/font.fnt`;
-                                                        nameY = 1025;
-                                                        break;
-                                                    default:
-                                                        nameY = 1010;
-                                                        break;
-                                                }
-                                            }
 
                                             if (isTWName) {
-                                                nameFont = `./fnt/tw/font.fnt`;
-                                                nameY = 990;
+                                                nameFont = getFnt('tw',j).nameFont || `./fnt/tw/font.fnt`;
+                                                nameY = getFnt('tw',j).nameY || 990;
                                             }
 
 
@@ -184,4 +147,76 @@ for (let i = 0; i < rangeArray.length; i++) {
         }).catch(err=>{console.log(err);});
 
     }
+}
+
+
+function getFnt(lang,j) {
+    let rs = {nameFont:"",nameY:""};
+
+    if (lang === 'tw') {
+        switch (j) {
+            case 56:
+            case 141:
+            case 198:
+                rs.nameFont = `./fnt/tw/s90/font.fnt`;
+                rs.nameY = 1015;
+                break;
+            case 156:
+            case 197:
+                rs.nameFont = `./fnt/tw/s100/font.fnt`;
+                rs.nameY = 1000;
+                break;
+        }
+    }else if (lang === 'en'){
+        switch (j) {
+            case 198:
+            case 197:
+            case 141:
+                rs.nameFont = `./fnt/en/s90/font.fnt`;
+                rs.nameY = 1025;
+                break;
+            case 171:
+            case 156:
+            case 114:
+            case 56:
+            case 79:
+            case 39:
+                rs.nameFont = `./fnt/en/s100/font.fnt`;
+                rs.nameY = 1025;
+                break;
+            default:
+                rs.nameY = 1010;
+                break;
+        }
+    }else if(lang === 'ja'){
+        switch (j) {
+            case 27:
+            case 39:
+            case 79:
+            case 56:
+            case 34:
+            case 139:
+                rs.nameFont = `./fnt/ja/s100/font.fnt`;
+                rs.nameY = 1025;
+                break;
+            case 156:
+            case 141:
+            case 114:
+            case 197:
+            case 198:
+                rs.nameFont = `./fnt/ja/s80/font.fnt`;
+                rs.nameY = 1040;
+                break;
+            case 50:
+            case 36:
+                rs.nameFont = `./fnt/ja/s65/font.fnt`;
+                rs.nameY = 1040;
+                break;
+            default:
+                rs.nameY = 990;
+                break;
+        }
+    }
+
+    return rs;
 }
