@@ -1,0 +1,14 @@
+{
+  "img": {"width": 240, "height": 429},
+  "T-doll-general-folder": "./images/t-doll/general",
+  "T-doll-ex-folder": "./images/t-doll/extra",
+  "T-doll-digital-Mind-folder": "./images/t-doll/digiMind",
+  "background-folder": "./images/background",
+  "frame-folder":  "./images/frame",
+  "type-folder" :  "./images/type",
+  "default-image": "./images/default.png",
+  "output-folder": "./output",
+  "file-name-prefix": "girl_",
+  "file-name-prefix-digi": "digiMindGirl_",
+  "quality": 100
+}
