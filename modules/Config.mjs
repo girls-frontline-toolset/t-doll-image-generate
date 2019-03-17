@@ -16,7 +16,7 @@
  *  @property {string} type
  */
 
-import tDollList from "./Resource";
+import {tDollList,exTDollList} from "./Resource";
 import config from "./config.json"
 
 export default class Config {
@@ -68,6 +68,14 @@ export default class Config {
      */
     static get tDoll(){
         return tDollList;
+    }
+
+    /**
+     * @public
+     * @return {ex-t-Doll}
+     */
+    static get exTDollList(){
+        return exTDollList;
     }
 
     /**

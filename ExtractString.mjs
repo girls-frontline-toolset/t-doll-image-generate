@@ -1,13 +1,12 @@
-import tDollList from './modules/Resource'
+import {tDollList,exTDollList} from './modules/Resource'
 import fs from "fs";
 
 let string = "";
 
 /** @type {'tw'|'cn'|'ja'|'en'} */
-let lang = "ja";
+let lang = "cn";
 
-for (let i = 0; i < tDollList.length; i++) {
-    let data = tDollList[i];
+function extracted(data) {
     let name = "name";
 
     switch (lang) {
@@ -23,11 +22,19 @@ for (let i = 0; i < tDollList.length; i++) {
     }
 
 
-    for (let j = 0; j < data[name].length ; j++) {
+    for (let j = 0; j < data[name].length; j++) {
         if (!string.includes(data[name][j])) {
             string += data[name][j];
         }
     }
+}
+
+for (let i = 0; i < tDollList.length; i++) {
+    extracted(tDollList[i]);
+}
+
+for (let i = 0; i < exTDollList.length; i++) {
+    extracted( exTDollList[i]);
 }
 fs.writeFileSync("string.txt", string);
 console.log(string);

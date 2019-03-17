@@ -12,7 +12,7 @@ const common = new Common();
 /** @type {boolean} */
 const isDigital = false;
 /** @type {'general'|'ex'} */
-const type = "general";
+const tDollType = "general";
 
 const rangeArray = range.split(",");
 
@@ -59,18 +59,29 @@ for (let i = 0; i < rangeArray.length; i++) {
     for (let j = start ; j <= end; j++) {
         let isTWName = false;
 
-        /** @type {t-doll} */
-        let data = config.tDoll[j - 1];
+        let data;
+        if (tDollType === "general") {
+            /** @type {t-doll} */
+            data = config.tDoll[j - 1];
+        } else {
+            /** @type {ex-t-Doll} */
+            data = config.exTDollList[j - 1];
+        }
 
         const savePath = common.config.folder.output + "/" + lang + "/"
             + ((isDigital)? 'digiMindGirl/':'')
+            + ((tDollType === 'ex')? 'ex/':'')
             + ((isDigital)? common.config.namePrefixDigi :common.config.namePrefix) + j  + ".jpg";
 
-        const tDollPath = ((isDigital) ? common.config.folder.digiMind :((type === "general")?common.config.folder.general:common.config.folder.ex)) + "/" + j + ".png";
+        const tDollPath = ((isDigital) ? common.config.folder.digiMind :((tDollType === "general")?common.config.folder.general:common.config.folder.ex)) + "/" + j + ".png";
 
         if (data === undefined ){
             SaveDefaultImage(j ,savePath);
             continue;
+        }
+
+        if (tDollType === "ex") {
+            data.star = 0;
         }
 
         if (lang !== 'tw' && data[name] === ""){
@@ -96,7 +107,7 @@ for (let i = 0; i < rangeArray.length; i++) {
         }
 
         const backgroundPath = common.config.folder.background + "/" + data.star + ".png";
-        const framePath = common.config.folder.frame + "/" + data.star + ".png";
+        const framePath = common.config.folder.frame + "/" + ((tDollType === 'ex')? 'ex' : data.star) + ".png";
         const typePath = common.config.folder.type + "/" + data.star + "/" + data.type + ".png";
 
         const typeMap = {HG:{tw:"手槍",en:"HG",ja:"ハンドガン",cn:"手枪"}
@@ -124,20 +135,30 @@ for (let i = 0; i < rangeArray.length; i++) {
 
 
                                             Jimp.loadFont(nameFont).then(font => {
-                                                background
-                                                    .composite(tDoll.resize(726 * 2, Jimp.AUTO), 0, 60)
-                                                    .composite(frame, 0, 0)
-                                                    .composite(type, 0, 0)
-                                                    .print(font, 5, nameY, data[name])
-                                                    .print(typeFont, 10,  typeY, typeMap[data.type][lang])
-                                                    .print(numberFont, (data.no.length === 3) ? 555 : (data.no.length === 2) ? 580 : 600, 1167, data.no)
-                                                    .quality(common.config.quality) // set JPEG quality
-                                                    .resize(common.config.img.width, common.config.img.height)
-                                                    .write(savePath); // save
+                                                Jimp.read("./images/star.png").then(starImage => {
 
-                                                console.log("no. " + j + " success");
+                                                    background
+                                                        .composite(tDoll.resize(726 * 2, Jimp.AUTO), 0, 60)
+                                                        .composite(frame, 0, 0)
+                                                        .composite(type, 0, 0)
+                                                        .print(font, 5, nameY, data[name])
+                                                        .print(typeFont, 10, typeY, typeMap[data.type][lang])
+                                                        .print(numberFont, (data.no.length === 3) ? 555 : (data.no.length === 2) ? 580 : 600, 1167, data.no);
 
-                                            })
+                                                    if (tDollType === "ex") {
+                                                        background
+                                                            .composite(starImage, 0, 0)
+                                                    }
+
+                                                    background
+                                                        .quality(common.config.quality) // set JPEG quality
+                                                        .resize(common.config.img.width, common.config.img.height)
+                                                        .write(savePath); // save
+
+                                                    console.log("no. " + j + " success");
+                                                });
+
+                                            });
                                         })
                                     })
                                 });
