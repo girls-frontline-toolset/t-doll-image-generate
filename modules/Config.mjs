@@ -49,6 +49,9 @@ export default class Config {
         /** @type {string}
          * @private */
         this._namePrefixDigi = config["file-name-prefix-digi"];
+        /** @type {string}
+         * @private */
+        this._namePrefixEx = config["file-name-prefix-ex"];
         /** @type {number}
          * @private */
         this._quality = config.quality;
@@ -72,7 +75,7 @@ export default class Config {
 
     /**
      * @public
-     * @return {ex-t-Doll}
+     * @return {ex-t-Doll[]}
      */
     static get exTDollList(){
         return exTDollList;
@@ -108,6 +111,14 @@ export default class Config {
      */
     get namePrefixDigi(){
         return this._namePrefixDigi;
+    }
+
+    /**
+     * @public
+     * @return {string}
+     */
+    get namePrefixEx(){
+        return this._namePrefixEx;
     }
 
     /**

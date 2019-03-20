@@ -10,5 +10,6 @@
   "output-folder": "./output",
   "file-name-prefix": "girl_",
   "file-name-prefix-digi": "digiMindGirl_",
+  "file-name-prefix-ex": "exgirl_",
   "quality": 100
 }

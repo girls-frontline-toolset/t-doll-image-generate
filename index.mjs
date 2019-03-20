@@ -71,7 +71,9 @@ for (let i = 0; i < rangeArray.length; i++) {
         const savePath = common.config.folder.output + "/" + lang + "/"
             + ((isDigital)? 'digiMindGirl/':'')
             + ((tDollType === 'ex')? 'ex/':'')
-            + ((isDigital)? common.config.namePrefixDigi :common.config.namePrefix) + j  + ".jpg";
+            + ((isDigital)? common.config.namePrefixDigi :
+                ((tDollType === 'ex')?common.config.namePrefixEx :
+                    common.config.namePrefix)) + j  + ".jpg";
 
         const tDollPath = ((isDigital) ? common.config.folder.digiMind :((tDollType === "general")?common.config.folder.general:common.config.folder.ex)) + "/" + j + ".png";
 
