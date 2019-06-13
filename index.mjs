@@ -113,7 +113,7 @@ for (let i = 0; i < rangeArray.length; i++) {
         const typePath = common.config.folder.type + "/" + data.star + "/" + data.type + ".png";
 
         const typeMap = {HG:{tw:"手槍",en:"HG",ja:"ハンドガン",cn:"手枪"}
-                        ,SMG:{tw:"衝鋒鎗",en:"SMG",ja:"サブマシ",cn:"冲锋枪"}
+                        ,SMG:{tw:"衝鋒槍",en:"SMG",ja:"サブマシ",cn:"冲锋枪"}
                         ,MG:{tw:"機槍",en:"MG",ja:"マシンガン",cn:"机枪"}
                         ,RF:{tw:"步槍",en:"RF",ja:"ライフル",cn:"步枪"}
                         ,AR:{tw:"突擊步槍",en:"AR",ja:"アサルト",cn:"突击步枪"}
@@ -190,17 +190,22 @@ function getFnt(lang,j) {
                 rs.nameY = 1000;
                 break;
         }
+
+        if(j === 21 && tDollType === "ex"){
+            rs.nameFont = `./fnt/${lang}/s100/font.fnt`;
+            rs.nameY = 1015;
+        }
     }else if (lang === 'en'){
         switch (j) {
             case 198:
             case 197:
             case 141:
+            case 114:
                 rs.nameFont = `./fnt/en/s90/font.fnt`;
                 rs.nameY = 1025;
                 break;
             case 171:
             case 156:
-            case 114:
             case 56:
             case 79:
             case 39:
@@ -219,6 +224,7 @@ function getFnt(lang,j) {
             case 56:
             case 34:
             case 139:
+            case 92:
                 rs.nameFont = `./fnt/ja/s100/font.fnt`;
                 rs.nameY = 1025;
                 break;
