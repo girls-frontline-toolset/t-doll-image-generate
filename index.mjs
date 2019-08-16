@@ -100,6 +100,9 @@ switch (lang) {
 
             if (isDigital) {
                 switch (data.star) {
+                    case "5":
+                        data.star = '6';
+                        break;
                     case "4":
                         data.star = '5';
                         break;

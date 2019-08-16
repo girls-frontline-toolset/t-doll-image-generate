@@ -1,4 +1,4 @@
-/** @typedef {'5','4','3','2'} DollStar */
+/** @typedef {'6','5','4','3','2'} DollStar */
 /** @typedef {'HG'|'SMG'|'RF'|'AR'|'MG'|'SG'} DollType */
 
 /** @typedef  {Array} t-doll
