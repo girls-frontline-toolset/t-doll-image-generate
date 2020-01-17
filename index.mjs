@@ -119,10 +119,10 @@ switch (lang) {
 
             const typeMap = {
                 HG: {tw: "手槍", en: "HG", ja: "ハンドガン", cn: "手枪"}
-                , SMG: {tw: "衝鋒槍", en: "SMG", ja: "サブマシ", cn: "冲锋枪"}
+                , SMG: {tw: "衝鋒槍", en: "SMG", ja: "サブマシン", cn: "冲锋枪"}
                 , MG: {tw: "機槍", en: "MG", ja: "マシンガン", cn: "机枪"}
                 , RF: {tw: "步槍", en: "RF", ja: "ライフル", cn: "步枪"}
-                , AR: {tw: "突擊步槍", en: "AR", ja: "アサルト", cn: "突击步枪"}
+                , AR: {tw: "突擊步槍", en: "AR", ja: "アサルトラ", cn: "突击步枪"}
                 , SG: {tw: "霰彈槍", en: "SG", ja: "シヨツトガン", cn: "霰弹枪"}
             };
 
