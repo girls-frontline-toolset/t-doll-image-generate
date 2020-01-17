@@ -232,6 +232,7 @@ switch (lang) {
                 case 34:
                 case 139:
                 case 92:
+                case 203:
                     rs.nameFont = `./fnt/ja/s100/font.fnt`;
                     rs.nameY = 1025;
                     break;
