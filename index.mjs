@@ -1,6 +1,7 @@
 import Common from './modules/Common.mjs';
 import fs from "fs";
 import config from './modules/Config.mjs';
+import {exec} from 'child_process';
 
 import Jimp from 'jimp';
 
@@ -257,3 +258,5 @@ switch (lang) {
 
     return rs;
 }
+
+exec('start "" "' + common.config.folder.output + '"');
