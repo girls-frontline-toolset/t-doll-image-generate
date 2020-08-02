@@ -7,6 +7,7 @@
 
 ## 2.預覽圖片
 <img src="/example/example.jpg" alt="example"/>
+<img src="/example/sprites-example.jpg" alt="sprites example"/>
 
 ## 3.使用方法
 ```
