@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/girls-frontline-toolset/t-doll-image-generate#readme",
   "dependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webp": "^6.0.0",
     "jimp": "^0.6.0",
     "sync-request": "^6.0.0"
   }
