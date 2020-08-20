@@ -188,6 +188,7 @@ switch (lang) {
             switch (j) {
                 case 56:
                 case 141:
+                case 317:
                 case 198:
                     rs.nameFont = `./fnt/${lang}/s90/font.fnt`;
                     rs.nameY = 1015;
@@ -208,6 +209,7 @@ switch (lang) {
                 case 198:
                 case 197:
                 case 141:
+                case 317:
                 case 114:
                     rs.nameFont = `./fnt/en/s90/font.fnt`;
                     rs.nameY = 1025;
