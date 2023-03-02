@@ -20,7 +20,7 @@
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-webp": "^6.0.0",
-    "jimp": "^0.6.0",
+    "jimp": "^0.22.7",
     "sync-request": "^6.0.0"
   }
 }
